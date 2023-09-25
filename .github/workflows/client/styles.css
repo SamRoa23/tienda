@@ -1,0 +1,273 @@
+
+/* Productos */
+
+.card-products-container{
+    margin: 5vh auto;
+}
+
+.card-products{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card-products img{
+    margin-top: 40px;
+    width: 250px;
+    height: 250px;
+}
+
+.card-products img:hover{
+    transform: scale(1.2);
+}
+
+.card-products button {
+    border: none;
+    outline: 0;
+    padding: 10px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 15px;
+}
+
+.card-products button:hover {
+    opacity: 0.7;
+}
+
+.card-products:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.info-product{
+    padding: 15px 30px;
+    line-height: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cart-btn {
+    position: fixed;
+    top: 90vh;
+    right: 40px;
+    background-color: black;
+    padding: 10px;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.cart-btn:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.modal-overlay {
+    display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ */
+}
+
+.modal-container {
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Modal Body */
+.modal-container::-webkit-scrollbar{
+    display: none;
+}
+
+.modal-close{
+    float: right;
+    cursor: pointer;
+}
+
+.modal-title{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    /*float: right;
+    cursor: pointer;*/
+}
+
+.modal-body {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.product{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.product img{
+    height: 100px;
+    margin-top: 40px;
+    width: 100px;
+    
+}
+
+.product-img{
+    height: 80px;
+    margin-right: 20px;
+    width: 80px; 
+}
+
+.product-info{
+    flex: 1;
+    text-align: left;
+}
+
+.product-info h4{
+    margin-top: 35px;
+}
+
+.quantity{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+
+}
+span{
+    /*background-color: #8dc3ed;*/
+    padding: 10px;
+    display: block;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+ .rory{
+    padding: 10px;
+    display: block;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+
+.quantity-btn-decrese,
+.quantity-btn-increse {
+    color: #333333;
+    cursor: pointer;
+    font-size: 16px;
+    width: 32px;
+    font-weight: bold;
+}
+
+.quantity-input{
+    color: #333333;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 15 15px;
+    text-align: center;
+    width: 70px;
+    font-weight: bold;
+}
+@media only screen and (max-width: 500px) {
+    .product-img {
+        display: none;
+    }
+    .modal-body {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+
+.price{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.delete-product {
+    margin-top: 20px;
+    margin-left: 2em;
+    cursor: pointer;
+}
+
+.modal-footer {
+    text-align: center;
+}
+
+.total-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Carrito */
+
+.cart-btn {
+    position: fixed;
+    top: 90vh;
+    right: 40px;
+    background-color: rgb(25,25,25);
+    padding: 10px;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.cart-btn:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.cart-counter {
+    display: none;
+    position: fixed;
+    top: 89vh;
+    right: 27px;
+    color: #fff;
+    text-align: center;
+    background-color: #ed3434;
+    padding: 4px;
+    border-radius: 50%;
+    height: 17px;
+    width: 17px;
+    font-size: 15px;
+}
