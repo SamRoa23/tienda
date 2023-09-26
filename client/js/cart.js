@@ -1,11 +1,10 @@
 const modalContainer = document.getElementById("modal-container");
+const modalPay = document.getElementById("modal-pay");
 const modalOverlay = document.getElementById("modal-overlay");
 
 const cartBtn = document.getElementById("cart-btn");
+const payBtn = document.getElementById("pay-btn");
 const cartCounter = document.getElementById("cart-counter");
-
-// Get the <span> element that closes the modal
-//var span = document.getElementsByClassName("close")[0];
 
 const displayCart = () => {
     modalContainer.innerHTML = "";
@@ -18,7 +17,7 @@ const displayCart = () => {
     const modalClose = document.createElement("div");
     
     modalClose.innerHTML = `
-        <span class="close">❌</span>
+        <span class="close"><img src="./icons/closeCart.png" width=50 height=50></span>
         
     `;
     
@@ -57,7 +56,7 @@ const displayCart = () => {
                     <span class"quantity-btn-increse" id="quantity-btn-increse"> +  </span>
                 </div>   
                 <div class="price"> ${itemProducto.price * itemProducto.quantity} $</div>
-                <div class="delete-product" id="delete-product">❌</div>
+                <div class="delete-product" id="delete-product"><img src="./icons/deleteItemCart.png" width=10 height=10></div>
             </div>    
         `;
 
@@ -108,7 +107,7 @@ const displayCart = () => {
         <div class="total-price">Total $ ${total}</div>
     `;
     modalContainer.append(modalFooter);
-
+  
     }
     else{
         const modalText = document.createElement("h2");
@@ -127,8 +126,84 @@ const deleteCartProd = (id) => {
     displayCartCounter();
 }
 
+//Modal Pay
+const modalHeaderPay = document.createElement("div");
+const modalBodyPay = document.createElement("div");
+const modalClosePay = document.createElement("div");
+const modalTitlePay = document.createElement("div");
+
+modalHeaderPay.className = "modal-pay"; 
+modalTitlePay.className = "modal-pay";
+modalClosePay.className = "modal-pay";
+modalBodyPay.className = "modal-pay";
+
+modalClosePay.innerHTML = `
+        <div><span class="close"><img src="./icons/closeCart.png" width=50 height=50></span></div>
+    `;
+    
+ modalClosePay.className = "close";
+
+modalPay.append(modalClosePay);
+
+modalClosePay.addEventListener("click", () => {
+        modalPay.style.display = "none";
+        //modalOverlay.style.display = "none";
+    });
+
+modalBodyPay.innerHTML = `
+<div></div>
+<div class="cliente">Nombre Cliente</div>
+
+<div>
+        <div><h3>Tipo de Pago: </h3></div>
+        <div><h3>Valor del Pago: $ </h3></div>
+        
+</div>
+`;
+modalBodyPay.className = "close";
+
+ modalPay.append(modalBodyPay);
+
+ const displayPay = () => {
+    modalTitlePay.addEventListener("click", () => {
+    modalPay.style.display = "none";
+    console.log("enviando correo....");
+    var templateParams = {
+        name: 'TiendaMeca',
+        notes: 'Gracias por la Compra!'
+    };
+    
+    //template_yqw1fkj
+    emailjs.send('service_qkm6l0c', 'template_p33kgq1', templateParams, '1hs4qNrXUTUhq0AoD')
+        .then(function(response) {
+           console.log('SUCCESS!', response.status, response.text);
+        }, function(error) {
+           console.log('FAILED...', error);
+        });
+});
+
+modalTitlePay.className = "close";
+modalTitlePay.innerHTML = `
+    <div>
+    <span class="close">
+    <button class="btn btn-primary">Aplicar Pago</button>
+    </span>
+    </div>
+`;
+
+ modalPay.append(modalTitlePay);
+ modalPay.style.display = "block";
+     
+}
+
+payBtn.addEventListener("click", displayPay);
+
 const displayCartCounter = ()=> {
     const totel = cart.reduce((acc, el) => acc + el.quantity, 0);
     cartCounter.style.display = "block";
     cartCounter.innerText = totel;
+    if(cart.length > 0){
+        payBtn.style.display = "block";
+    }
 }
+
