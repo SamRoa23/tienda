@@ -9,7 +9,7 @@ const products = [
 },
 {
     id: 2,
-    productName:  "nRF24L01",
+    productName:  "nRF24L01 Module",
     price: 11000,
     quantity: 1,
     img: "./images/nRF24L01.jpg",
@@ -23,14 +23,14 @@ const products = [
 },
 {
     id: 4,
-    productName:  "AMS1117 3.3v",
+    productName:  "AMS1117 3.3v Module",
     price: 2500,
     quantity: 1,
     img: "./images/ams11173.3v.jpg",
 },
 {
     id: 5,
-    productName:  "ESP32 Wrover Cam SD 1Gb Module",
+    productName:  "ESP32 Wrover Cam SD 1Gb",
     price: 82000,
     quantity: 1,
     img: "./images/esp32wrover.jpg",

@@ -17,6 +17,7 @@ products.forEach((itemProducto) =>{
         const buyButton = document.createElement("button");
         
         buyButton.innerText = "Carrito";
+        buyButton.className = "modal-body"
 
         content.append(buyButton); 
 
