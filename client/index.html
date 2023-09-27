@@ -19,29 +19,27 @@
 
     <!-- Boton Carrito-->
     <div class="cart-btn" id="cart-btn">🛒</div>
+
     <!-- Contador Elementos Carrito-->
     <span class="cart-counter" id="cart-counter">0</span>
 
-    <!-- Boton Pago-->
-    <div class="pay-btn" id="pay-btn"><img src="./icons/payCart.png"></div>
-
     <!-- Contenedor Modal (Emergente) para el Carrito -->
     <div class="modal-overlay" id="modal-overlay"></div>
-
     <div class="modal-container" id="modal-container"></div>
 
+    <!-- Contenedor Modal (Emergente) para el Pago -->
     <div class="modal-pay" id="modal-pay"></div>
+    <!-- Boton Aplicar Pago-->
+    <div class="pay-btn" id="pay-btn"><img src="./icons/payCart.png"></div>
 
+    <!-- Contenedor Modal (Emergente) para la Descripcion del producto -->
+    <div class="modal-desprod" id="modal-desprod"></div>
 
     <script src="./js/products.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/cart.js"></script>
-    <script src="./js/email.min.js"></script>
-    <script src=""
+    <script src="./js/email.min.js"></script> 
 
-    <!-- <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
-    </script> -->
     <script type="text/javascript">
         (function(){
            emailjs.init("service_qkm6l0c");

@@ -188,7 +188,7 @@ modalBodyPay.innerHTML = `
         <div class="col">
             Nombre:
         </div>
-        <div class="col">
+        <div class="colcol-sm-5">
         <input type="text" class="form-control" id="InputName" placeholder="nombre de cliente">
         </div>
       </div>
@@ -197,7 +197,7 @@ modalBodyPay.innerHTML = `
         <div class="col">
           Email:
         </div>
-        <div class="col">
+        <div class="col-sm-7">
           <input type="email" class="form-control" id="InputEmail" placeholder="nombree@dominio.com">
         </div>
       </div>
@@ -207,7 +207,7 @@ modalBodyPay.innerHTML = `
             Tipo Pago:
         </div>
         <div class="col">
-        <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Escoja...">
+        <input class="form-control" list="datalistOptions" id="ListTipoPago" placeholder="Escoja...">
         <datalist id="datalistOptions">
           <option value="Efectivo">
           <option value="Tarjeta Debito">
@@ -237,19 +237,21 @@ modalPay.append(modalBodyPay);
 
  const displayPay = () => {
     
-    var x = document.getElementById("InputEmail");
+    //var x = document.getElementById("InputEmail");
+    let nomCliente = document.querySelector("#InputName");
+    let emailDestino = document.querySelector("#InputEmail");
+    let tipoPago = document.querySelector("#ListTipoPago");
     
-    /* if(x){
-        var defaultVal = x.defaultValue;
-        var mail = x.value;
-        alert(defaultVal);
-        alert(mail);
-
-            var inputVal = document.getElementById("InputEmail");
-            alert(inputVal.value);
-    } */
-
+    console.log("Q...." + cart.length);
+    
     document.getElementById("InputValor").value = ptotal;
+    let html = "";
+
+    cart.forEach((itemProducto) =>{
+        html += '(' + itemProducto.quantity + ')' +  '\t' + itemProducto.productName + '\n';
+    });
+
+    console.log(html);
 
     modalTitlePay.addEventListener("click", () => {
     
@@ -257,19 +259,23 @@ modalPay.append(modalBodyPay);
     var templateParams = {
         name: 'TiendaMeca',
         from_name: 'samueldavidroa@gmail.com',
-        message: 'Valor de la factura $' + ptotal + ' Encontrara la Remision adjunta en el correo',
+        to_name: emailDestino.value,
+        cliente: nomCliente.value,
+        message: 'Nombre Cliente: ' + nomCliente.value + ' Forma de Pago: ' + tipoPago.value + ' Valor de la factura $' + ptotal + ' Encontrara la Remision adjunta en el correo',
+        message_html: html,
         notes: 'Gracias por la Compra!'
     };
     
     //template_yqw1fkj
     emailjs.send('service_qkm6l0c', 'template_p33kgq1', templateParams, '1hs4qNrXUTUhq0AoD')
         .then(function(response) {
-           console.log('SUCCESS!', response.status, response.text);
+           //console.log('SUCCESS!', response.status, response.text);
         }, function(error) {
            console.log('FAILED...', error);
         });
 
-        modalPay.style.display = "none";
+        modalPay.style.display = "none"; 
+         
 });
 
 modalTitlePay.className = "close";

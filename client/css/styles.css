@@ -71,7 +71,7 @@
 }
 
 .modal-container {
-    display: flex;
+    display: none;
     background-color: #ffffff;
     box-shadow: 0px 3px 6px #00000029;
     padding: 40px;
@@ -90,6 +90,7 @@
 .modal-pay{
     display: none;
     background-color: #ffffff;
+    width: 750px;
     box-shadow: 0px 3px 6px #00000029;
     padding: 40px;
     position: absolute; 
@@ -99,6 +100,22 @@
 }
 
 .modal-pay::-webkit-scrollbar{
+    display: none;
+}
+
+/* Modal Descripcion Producto */
+.modal-desprod{
+    display: none;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 6px #00000029;
+    padding: 40px;
+    position: absolute; 
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-desprod::-webkit-scrollbar{
     display: none;
 }
 

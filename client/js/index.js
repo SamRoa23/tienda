@@ -1,4 +1,4 @@
-//Cargo las imagenes
+//Cargo los productos en la pagina
 const shopContent = document.getElementById("shopContent");
 
 const cart = [];
@@ -7,11 +7,11 @@ products.forEach((itemProducto) =>{
     const content = document.createElement("div");
     content.className = "card";
     content.innerHTML = `
-        <img alt="${itemProducto.productName}" src="${itemProducto.img}" >
+        <img id="myImg" alt="${itemProducto.productName}" src="${itemProducto.img}" >
         <h3>${itemProducto.productName}</h3>
         <p>${itemProducto.price} $</p>
         `;
-        //console.log("Agregando...");
+        
         shopContent.append(content);
 
         const buyButton = document.createElement("button");
@@ -41,8 +41,8 @@ products.forEach((itemProducto) =>{
                     img: itemProducto.img,
                 });
                 displayCartCounter();
-                //console.log(cart);
             } 
         });
 
 });
+
