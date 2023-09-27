@@ -242,7 +242,7 @@ modalPay.append(modalBodyPay);
     let emailDestino = document.querySelector("#InputEmail");
     let tipoPago = document.querySelector("#ListTipoPago");
     
-    console.log("Q...." + cart.length);
+    //console.log("Q...." + cart.length);
     
     document.getElementById("InputValor").value = ptotal;
     let html = "";
@@ -251,17 +251,22 @@ modalPay.append(modalBodyPay);
         html += '(' + itemProducto.quantity + ')' +  '\t' + itemProducto.productName + '\n';
     });
 
-    console.log(html);
+    //console.log(html);
 
     modalTitlePay.addEventListener("click", () => {
     
-    console.log("Enviando correo...." + " " + ptotal);
+    //console.log("Enviando correo a...." + " " + emailDestino.value);
+    let mensaje = "Nombre Cliente: " + nomCliente.value + "\n";
+    mensaje += "Forma de Pago: " + tipoPago.value + "\n";
+    mensaje += "Valor de la factura $" + ptotal + "\n\n";
+    mensaje += "Encontrara la Remision adjunta en el correo";
+
     var templateParams = {
         name: 'TiendaMeca',
-        from_name: 'samueldavidroa@gmail.com',
-        to_name: emailDestino.value,
+        from_name: emailDestino.value,
+        to_email: emailDestino.value,
         cliente: nomCliente.value,
-        message: 'Nombre Cliente: ' + nomCliente.value + ' Forma de Pago: ' + tipoPago.value + ' Valor de la factura $' + ptotal + ' Encontrara la Remision adjunta en el correo',
+        message: mensaje,
         message_html: html,
         notes: 'Gracias por la Compra!'
     };
