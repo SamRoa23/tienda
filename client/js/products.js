@@ -1,4 +1,4 @@
-/* Lista productos como un array */
+/* Lista productos como un array, con imagenes de 800pxx800px*/
 const products = [
 {
     id: 1,

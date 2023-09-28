@@ -265,14 +265,14 @@ modalPay.append(modalBodyPay);
         name: 'TiendaMeca',
         from_name: emailDestino.value,
         to_email: emailDestino.value,
-        cliente: nomCliente.value,
+        nombre_cliente: nomCliente.value,
         message: mensaje,
-        message_html: html,
+        message_productos: html,
         notes: 'Gracias por la Compra!'
     };
     
     //template_yqw1fkj
-    emailjs.send('service_qkm6l0c', 'template_p33kgq1', templateParams, '1hs4qNrXUTUhq0AoD')
+    emailjs.send('service_4qs3lwo', 'template_bmp256o', templateParams, 'Wc8w-ntVwOQLrcWmy')
         .then(function(response) {
            //console.log('SUCCESS!', response.status, response.text);
         }, function(error) {

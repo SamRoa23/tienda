@@ -1,10 +1,13 @@
-//Cargo los productos en la pagina
-const shopContent = document.getElementById("shopContent");
-const modalDescripcion = document.getElementById("modal-descripcion");
+//Cargo los productos en la pagina html, desde el arreglo (products.js)
 
-const cart = [];
+//Enlazo en una variable la etiqueta con el ID correspondiente del DOM (Document Object Model) o pagina html
+const shopContent = document.getElementById("shopContent");             //Div en que adiciono la lista de productos
+const modalDescripcion = document.getElementById("modal-descripcion");  //Modal descripcion del producto
 
-products.forEach((itemProducto) =>{
+const cart = [];                                                        //Defino arreglo para manejo de los productos desde products.js
+
+products.forEach((itemProducto) =>{                                     //Recorre el arreglo por cada item
+
     const content = document.createElement("div");
     content.className = "card";
     content.innerHTML = `
@@ -72,7 +75,7 @@ const displayProducto = (idx)=> {
     modalClose.className = "modal-body";
     modalHeader.append(modalClose);
 
-    const modalTitle = document.createElement("div");
+    //const modalTitle = document.createElement("div");
 
     modalClose.addEventListener("click", () => {
         modalDescripcion.style.display = "none";

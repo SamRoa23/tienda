@@ -35,14 +35,15 @@
     <!-- Contenedor Modal (Emergente) para la Descripcion del producto -->
     <div class="modal-descripcion" id="modal-descripcion"></div>
 
-    <script src="./js/products.js"></script>
-    <script src="./js/index.js"></script>
-    <script src="./js/cart.js"></script>
-    <script src="./js/email.min.js"></script> 
-
-    <script type="text/javascript">
-        (function(){
-           emailjs.init("service_qkm6l0c");
+    <script src="./js/products.js"></script>    <!-- Contiene un arreglo de los productos con sus propiedades -->
+    <script src="./js/index.js"></script>       <!-- Codigo para listar productos en la pagina principal index.html -->
+    <script src="./js/cart.js"></script>        <!-- Codigo que llena el modal del carrito, pago y descripcion, contador, etc -->
+    <script src="./js/email.min.js"></script>   <!-- Libreria externa para enviar correo -->
+    
+    <!-- Inicializa el Servicio de Correo via SMTP -->
+    <script type="text/javascript">             
+        (function(){                            
+           emailjs.init("service_4qs3lwo");
         })();
     </script>
 
