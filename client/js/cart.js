@@ -29,7 +29,7 @@ const displayCart = () => {
     modalClose.className = "modal-body";
     modalHeader.append(modalClose);
 
-    const modalTitle = document.createElement("div");
+    //const modalTitle = document.createElement("div");
 
     modalClose.addEventListener("click", () => {
         modalContainer.style.display = "none";
@@ -37,44 +37,40 @@ const displayCart = () => {
     });
 
     modalContainer.append(modalHeader);
-    console.log(cart.length);
+    //console.log(cart.length);
 
     if(cart.length > 0){
 
-    //Body del Modal
+    //Body del Modal Carrito
     cart.forEach((itemProducto) =>{
         const modalBody = document.createElement("div");
         modalBody.className = "modal-body";
         modalBody.innerHTML = `
         <div class="container ">
-        <div class="row">
-            <div class="col">
-                <img class="product-img" src="${itemProducto.img}" />   
+            <div class="row">
+                <div class="col">
+                    <img class="product-img" src="${itemProducto.img}" />   
+                </div>
+                <div class="col">
+                    <h4>${itemProducto.productName}</h4>        
+                </div>
+                <div class="col">
+                    <span class"quantity-btn-decrese" id="quantity-btn-decrese"> -  </span>            
+                </div>
+                <div class="col">
+                    <span class"quantity-input" id="quantity-input"> (${itemProducto.quantity}) </span>    
+                </div>
+                <div class="col">
+                    <span class"quantity-btn-increse" id="quantity-btn-increse"> +  </span>    
+                </div>
+                <div class="col">
+                    <div class="price">$${itemProducto.price * itemProducto.quantity}</div>        
+                </div>
+                <div class="col">
+                    <div class="delete-product" id="delete-product"><img src="./icons/deleteItemCart.png" width=20 height=20></div>
+                </div>
             </div>
-            <div class="col">
-                <h4>${itemProducto.productName}</h4>        
-            </div>
-            <div class="col">
-                <span class"quantity-btn-decrese" id="quantity-btn-decrese"> -  </span>            
-            </div>
-            <div class="col">
-                <span class"quantity-input" id="quantity-input"> (${itemProducto.quantity}) </span>    
-            </div>
-            <div class="col">
-                <span class"quantity-btn-increse" id="quantity-btn-increse"> +  </span>    
-            </div>
-            <div class="col">
-                <div class="price">$${itemProducto.price * itemProducto.quantity}</div>        
-            </div>
-            <div class="col">
-                <div class="delete-product" id="delete-product"><img src="./icons/deleteItemCart.png" width=20 height=20></div>
-            </div>
-        
         </div>
-    
-     </div>
-    
-
         `;
 
         modalContainer.append(modalBody);
@@ -89,9 +85,6 @@ const displayCart = () => {
                     displayCartCounter();
                 }
             });
-        }
-        else{
-            //console.log("NO decrese....");
         }
 
         const increse = modalBody.querySelector("#quantity-btn-increse");
@@ -188,7 +181,7 @@ modalBodyPay.innerHTML = `
         <div class="col">
             Nombre:
         </div>
-        <div class="colcol-sm-5">
+        <div class="col-sm-5">
         <input type="text" class="form-control" id="InputName" placeholder="nombre de cliente">
         </div>
       </div>
@@ -216,7 +209,6 @@ modalBodyPay.innerHTML = `
           <option value="Consignacion Bancaria">
         </datalist>
         </div>
-        
       </div>
 
       <div class="row">
@@ -226,7 +218,17 @@ modalBodyPay.innerHTML = `
         <div class="col">
         <input type="text" class="form-control" id="InputValor" value="0" disabled readonly>
         </div>
-      </div>        
+      </div> 
+
+      <div class="row">
+      <div class="col">
+          Flete:
+      </div>
+      <div class="col">
+      <input type="text" class="form-control" id="InputFlete" value="0">
+      </div>
+    </div>        
+     
  </div>
 
 `;
@@ -247,6 +249,7 @@ modalPay.append(modalBodyPay);
     document.getElementById("InputValor").value = ptotal;
     let html = "";
 
+    //Arma los productos del Carrito que se estan pagando
     cart.forEach((itemProducto) =>{
         html += '(' + itemProducto.quantity + ')' +  '\t' + itemProducto.productName + '\n';
     });
@@ -271,7 +274,7 @@ modalPay.append(modalBodyPay);
         notes: 'Gracias por la Compra!'
     };
     
-    //template_yqw1fkj
+    //service_id, template_id, templateParams, Public Key   (EmailJS)
     emailjs.send('service_4qs3lwo', 'template_bmp256o', templateParams, 'Wc8w-ntVwOQLrcWmy')
         .then(function(response) {
            //console.log('SUCCESS!', response.status, response.text);
