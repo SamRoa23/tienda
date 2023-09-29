@@ -35,17 +35,64 @@
     <!-- Contenedor Modal (Emergente) para la Descripcion del producto -->
     <div class="modal-descripcion" id="modal-descripcion"></div>
 
+    <div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#home">Home</a>
+        </li>
+       
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#contact">Aplicacion</a>
+        </li>
+      </ul>
+      
+      <div class="container-fluid">
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane fade show active" id="home">
+            <div class="alert alert-info">
+              <p>Samuel David Roa Gomez / Ing.Mecatronica. UMNG (2023)</p>
+            </div>
+          </div>
+         
+          <div role="tabpanel" class="tab-pane fade show active" id="contact">
+            <div class="alert alert-info">
+              <p>Tienda en Linea de Productos Electronicos</p>
+              <p>Funcionalidades Basicas:</p>
+              <p>Listar Productos para la venta</p>
+              <p>Ver Descripcion de cada Producto</p>
+              <p>Agregar Producto al Carrito de Compras</p>
+              <p>Incrementar/Disminuir Cantidad en el Carrito de Compras</p>
+              <p>Eliminar Producto del Carrito de Compras</p>
+              <p>Ventana de Pago de los Productos con formulario basico</p>
+              <p>Al aplicar el pago, se envia un Email, con los datos de la Compra al Cliente</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="./js/products.js"></script>    <!-- Contiene un arreglo de los productos con sus propiedades -->
     <script src="./js/index.js"></script>       <!-- Codigo para listar productos en la pagina principal index.html -->
     <script src="./js/cart.js"></script>        <!-- Codigo que llena el modal del carrito, pago y descripcion, contador, etc -->
     <script src="./js/email.min.js"></script>   <!-- Libreria externa para enviar correo -->
-    
+    <script src="./jscsscdn/jquery-3.7.1.slim.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="./jscsscdn/popper.js" crossorigin="anonymous"></script> -->
+    <script src="./js/bootstrap.min.js"></script>
+
     <!-- Inicializa el Servicio de Correo via SMTP -->
     <script type="text/javascript">             
         (function(){                            
            emailjs.init("service_4qs3lwo");
         })();
     </script>
+
+<script>
+    $(document).ready(function(){
+        $(".nav-item a").click(function(){
+          $(this).tab('show');
+        });
+      });
+  </script>
 
 </body>
 </html>

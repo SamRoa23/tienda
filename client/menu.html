@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./js/bootstrap.min.css">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" rel="stylesheet" /> -->
+</head>
+<body>
+
+ 
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#home">Home</a>
+  </li>
+ <!--  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" data-toggle="tab" href="#one">One</a>
+      <a class="dropdown-item" data-toggle="tab" href="#two">Two</a>
+      <a class="dropdown-item" data-toggle="tab" href="#three">Three</a>
+    </div>
+  </li> -->
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#contact">Aplicacion</a>
+  </li>
+</ul>
+
+<div class="container-fluid">
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade show active" id="home">
+      <div class="alert alert-info">
+        <p>Samuel David Roa Gomez / Ing.Mecatronica. UMNG (2023)</p>
+      </div>
+    </div>
+    <!-- <div role="tabpanel" class="tab-pane fade" id="one">
+      <div class="alert alert-info">One</div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="two">
+      <div class="alert alert-info">Two</div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="three">
+      <div class="alert alert-info">Three</div>
+    </div> -->
+    <div role="tabpanel" class="tab-pane fade show active" id="contact">
+      <div class="alert alert-info">
+        <p>Tienda en Linea de Productos Electronicos</p>
+        <p>Funcionalidades Basicas:</p>
+        <p>Listar Productos para la venta</p>
+        <p>Ver Descripcion de cada Producto</p>
+        <p>Agregar Producto al Carrito de Compras</p>
+        <p>Incrementar/Disminuir Cantidad en el Carrito de Compras</p>
+        <p>Eliminar Producto del Carrito de Compras</p>
+        <p>Ventana de Pago de los Productos con formulario basico</p>
+        <p>Al aplicar el pago, se envia un Email, con los datos de la Compra al Cliente</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.3.4/js/tether.min.js"></script> -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js"></script> -->
+<script src="./jscsscdn/jquery-3.7.1.slim.min.js" crossorigin="anonymous"></script>
+<script src="./jscsscdn/popper.js" crossorigin="anonymous"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script> -->
+<script src="./js/bootstrap.min.js"></script>
+
+<script>
+  $(document).ready(function(){
+      $(".nav-item a").click(function(){
+        $(this).tab('show');
+      });
+    });
+</script>
+
+</body>
+</html>
+      

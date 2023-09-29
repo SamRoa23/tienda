@@ -112,7 +112,7 @@ const displayCart = () => {
     ptotal = total;
 
     //Modal footer
-    console.log(ptotal);
+    
     const modalFooter = document.createElement("div");
     modalFooter.className = "modal-footer";
     modalFooter.innerHTML = `
@@ -181,8 +181,8 @@ modalBodyPay.innerHTML = `
         <div class="col">
             Nombre:
         </div>
-        <div class="col-sm-5">
-        <input type="text" class="form-control" id="InputName" placeholder="nombre de cliente">
+        <div class="col-sm-7">
+        <input type="text" class="inputtexto" id="InputName" placeholder="nombre de cliente" style="width: 205px;">
         </div>
       </div>
       
@@ -191,7 +191,7 @@ modalBodyPay.innerHTML = `
           Email:
         </div>
         <div class="col-sm-7">
-          <input type="email" class="form-control" id="InputEmail" placeholder="nombree@dominio.com">
+          <input type="email" class="inputtexto" id="InputEmail" placeholder="nombree@dominio.com">
         </div>
       </div>
 
@@ -199,7 +199,7 @@ modalBodyPay.innerHTML = `
         <div class="col">
             Tipo Pago:
         </div>
-        <div class="col">
+        <div class="col-sm-7">
         <input class="form-control" list="datalistOptions" id="ListTipoPago" placeholder="Escoja...">
         <datalist id="datalistOptions">
           <option value="Efectivo">
@@ -216,7 +216,7 @@ modalBodyPay.innerHTML = `
             Valor Pago:
         </div>
         <div class="col">
-        <input type="text" class="form-control" id="InputValor" value="0" disabled readonly>
+        <input type="text" class="inputnumero" id="InputValor" value="0" disabled readonly>
         </div>
       </div> 
 
@@ -225,7 +225,7 @@ modalBodyPay.innerHTML = `
           Flete:
       </div>
       <div class="col">
-      <input type="text" class="form-control" id="InputFlete" value="0">
+      <input type="text" class="InputFlete" id="InputFlete" value="0">
       </div>
     </div>        
      
@@ -237,16 +237,28 @@ modalBodyPay.className = "close";
 
 modalPay.append(modalBodyPay);
 
- const displayPay = () => {
+ const enviarPago = () => {
     
     //var x = document.getElementById("InputEmail");
     let nomCliente = document.querySelector("#InputName");
     let emailDestino = document.querySelector("#InputEmail");
     let tipoPago = document.querySelector("#ListTipoPago");
-    
-    //console.log("Q...." + cart.length);
-    
+    let flete = document.querySelector("#InputFlete");
+
     document.getElementById("InputValor").value = ptotal;
+    let rtotal = document.querySelector("#InputValor"); 
+
+    var gtotal = parseInt(rtotal.value) + parseInt(flete.value);
+    
+/*     if(isNaN(gtotal)){
+        console.log(ptotal);
+        console.log(flete.value);
+        console.log("is non");
+        return;
+    }
+ */
+    console.log("gtotal ...." + gtotal);
+    
     let html = "";
 
     //Arma los productos del Carrito que se estan pagando
@@ -262,6 +274,8 @@ modalPay.append(modalBodyPay);
     let mensaje = "Nombre Cliente: " + nomCliente.value + "\n";
     mensaje += "Forma de Pago: " + tipoPago.value + "\n";
     mensaje += "Valor de la factura $" + ptotal + "\n\n";
+    mensaje += "Valor del flete $" + flete.value + "\n\n";
+    mensaje += "Valor Total $" + gtotal + "\n\n";
     mensaje += "Encontrara la Remision adjunta en el correo";
 
     var templateParams = {
@@ -290,7 +304,7 @@ modalTitlePay.className = "close";
 modalTitlePay.innerHTML = `
     <div>
     <span class="close">
-    <button class="btn btn-primary">Aplicar Pago</button>
+    <button class="btn btn-primary">Pagar</button>
     </span>
     </div>
 `;
@@ -302,12 +316,19 @@ modalTitlePay.innerHTML = `
 
 /* Boton Pagar en el Modal de Pago*/
 
-payBtn.addEventListener("click", displayPay);
+payBtn.addEventListener("click", enviarPago);
 
 const displayCartCounter = ()=> {
     const totel = cart.reduce((acc, el) => acc + el.quantity, 0);
     cartCounter.style.display = "block";
     cartCounter.innerText = totel;
     
+}
+
+function formatearNum(n, sep, decimals) {
+    sep = sep || ","; // Default to period as decimal separator
+    decimals = decimals || 2; // Default to 2 decimals
+
+    return n.toLocaleString("en-US", {style:"currency", currency:"USD"});
 }
 
