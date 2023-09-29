@@ -75,12 +75,12 @@ const products = [
 },
 {
     id: 9,
-    productName:  "ATMega 328p Chip",
+    productName:  "MPU6050 Chip",
     price: 21000,
     quantity: 1,
-    img: "./images/atmega328p.jpg",
-    description:"Microcontrolador ATMega328P-PU precargado con el Bootloader de la tarjeta Arduino Uno R3. Puedes usar este chip con el entorno Arduino en tus proyectos, sin necesidad de utilizar una tarjeta Arduino Uno, lo puedes usar tambíen como un Arduino Uno standalone. También sirve como repuesto para el que trae la tarjeta Arduino Uno en caso de mal funcionamiento de este microcontrolador",
-    specifications: "Voltaje de operación: 1.8 VDC5.5 VDC., Consumo máximo de corriente: 2.7 miliamperios., Encapsulado: DIP de 28 pines., Puertos PWM: 6., Puertos seriales USART: 1., Conversores ADC de 10 bits: 6., Puertos sincrónicos (SPI, I2C): 1.,Frecuencia Máxima de operación: 20 MHz., Memoria de Programa tipo Flash: 32 KBytes., Memoria SRAM: 2 KBytes., Memoria EEPROM: 1 KBytes., Número de Timers/contadores: 3.,Pines de entrada/salida digitales: 13 pines., Rango de temperatura de operación: -40ºC a +85ºC., Fabricante: Microchip.",
+    img: "./images/mpu6050.jpg",
+    description:"EL MPU6050 es una unidad de medición inercial o IMU (Inertial Measurment Units) de 6 grados de libertad (DoF) pues combina un acelerómetro de 3 ejes y un giroscopio de 3 ejes. Este sensor es muy utilizado en navegación, goniometría, estabilización",
+    specifications: "Voltaje de Alimentación: 3V ~ 5V.,6 Grados de libertad: 3 acelerometro y 3 giroscopio., Rango acelerómetro (medida ajustable): ± 2g, ± 4g, ± 8g y ± 16g., Sensibilidad giroscopio: 131 LSBs/dps., Rango giroscopio (medida ajustable): ± 250dps , ± 500dps , ± 1000dps y ± 2000dps., Interfaz: I2C.",
 },
 {
     id: 10,
