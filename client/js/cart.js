@@ -17,7 +17,8 @@ const displayCart = () => {
     const modalHeader = document.createElement("div");
 
     const modalClose = document.createElement("div");
-    
+    const modalTrash = document.createElement("div");
+
     modalClose.innerHTML = `
     <div class="container ">
       <div class="row">
@@ -25,13 +26,35 @@ const displayCart = () => {
       </div>
     </div>
     `;
-    
+
+    modalTrash.innerHTML = `
+    <div class="container ">
+      <div class="row">
+        <span class="close"><img src="./icons/trashall.png" width=50 height=50></span>
+      </div>
+    </div>
+    `;
+
+
     modalClose.className = "modal-body";
+    modalTrash.className = "modal-body";
     modalHeader.append(modalClose);
+    modalHeader.append(modalTrash);
 
     //const modalTitle = document.createElement("div");
 
     modalClose.addEventListener("click", () => {
+        modalContainer.style.display = "none";
+        modalOverlay.style.display = "none";
+    });
+
+    //Limpia todos los items del Carrito
+    modalTrash.addEventListener("click", () => {
+        cart.splice(0,cart.length);
+        displayCartCounter();
+        displayCart();
+        document.getElementById("InputValor").value = ptotal;
+        payBtn.style.display = "none";
         modalContainer.style.display = "none";
         modalOverlay.style.display = "none";
     });
