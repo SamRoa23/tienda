@@ -15,7 +15,6 @@ const displayCart = () => {
 
     //Header
     const modalHeader = document.createElement("div");
-
     const modalClose = document.createElement("div");
     const modalTrash = document.createElement("div");
 
@@ -34,7 +33,6 @@ const displayCart = () => {
       </div>
     </div>
     `;
-
 
     modalClose.className = "modal-body";
     modalTrash.className = "modal-body";
@@ -172,6 +170,7 @@ const modalHeaderPay = document.createElement("div");
 const modalBodyPay = document.createElement("div");
 const modalClosePay = document.createElement("div");
 const modalTitlePay = document.createElement("div");
+const modalBtnPay = document.createElement("div");
 
 modalHeaderPay.className = "modal-pay"; 
 modalTitlePay.className = "modal-pay";
@@ -184,12 +183,23 @@ modalClosePay.innerHTML = `
     
  modalClosePay.className = "close";
 
+ modalBtnPay.innerHTML = `
+        <div><span class="close"><img src="./icons/Pago.png" width=50 height=50></span></div>
+    `;
+
 modalPay.append(modalClosePay);
+modalPay.append(modalBtnPay);
 
 modalClosePay.addEventListener("click", () => {
         modalPay.style.display = "none";
         //modalOverlay.style.display = "none";
     });
+
+    modalBtnPay.addEventListener("click", () => {
+        pagarCompras();
+        modalPay.style.display = "none";
+        
+    });    
 
 modalBodyPay.innerHTML = `
 
@@ -260,9 +270,13 @@ modalBodyPay.className = "close";
 
 modalPay.append(modalBodyPay);
 
+const displayModalPay = () => {
+    document.getElementById("InputValor").value = ptotal;
+    modalPay.style.display = "block"; 
+}
+
  const enviarPago = () => {
     
-    //var x = document.getElementById("InputEmail");
     let nomCliente = document.querySelector("#InputName");
     let emailDestino = document.querySelector("#InputEmail");
     let tipoPago = document.querySelector("#ListTipoPago");
@@ -273,15 +287,6 @@ modalPay.append(modalBodyPay);
 
     var gtotal = parseInt(rtotal.value) + parseInt(flete.value);
     
-/*     if(isNaN(gtotal)){
-        console.log(ptotal);
-        console.log(flete.value);
-        console.log("is non");
-        return;
-    }
- */
-    console.log("gtotal ...." + gtotal);
-    
     let html = "";
 
     //Arma los productos del Carrito que se estan pagando
@@ -289,11 +294,8 @@ modalPay.append(modalBodyPay);
         html += '(' + itemProducto.quantity + ')' +  '\t' + itemProducto.productName + '\n';
     });
 
-    //console.log(html);
-
     modalTitlePay.addEventListener("click", () => {
     
-    //console.log("Enviando correo a...." + " " + emailDestino.value);
     let mensaje = "Nombre Cliente: " + nomCliente.value + "\n";
     mensaje += "Forma de Pago: " + tipoPago.value + "\n";
     mensaje += "Valor de la factura $" + ptotal + "\n\n";
@@ -339,7 +341,7 @@ modalTitlePay.innerHTML = `
 
 /* Boton Pagar en el Modal de Pago*/
 
-payBtn.addEventListener("click", enviarPago);
+payBtn.addEventListener("click", displayModalPay);
 
 const displayCartCounter = ()=> {
     const totel = cart.reduce((acc, el) => acc + el.quantity, 0);
@@ -355,3 +357,61 @@ function formatearNum(n, sep, decimals) {
     return n.toLocaleString("en-US", {style:"currency", currency:"USD"});
 }
 
+const pagarCompras = () => {
+
+    let nomCliente = document.querySelector("#InputName");
+    let emailDestino = document.querySelector("#InputEmail");
+    let tipoPago = document.querySelector("#ListTipoPago");
+    let flete = document.querySelector("#InputFlete");
+
+     //Valida
+     if(nomCliente.value === "" || emailDestino.value === "" || ListTipoPago.value === ""){
+        alert("Parce, Diligencia Campos Obligatorios!");
+        return;
+     }
+
+    let rtotal = document.querySelector("#InputValor"); 
+
+    var gtotal = parseInt(rtotal.value) + parseInt(flete.value);
+
+    console.log("grantotal ...." + gtotal);
+    
+    let html = "";
+
+    //Arma los productos del Carrito que se estan pagando
+    cart.forEach((itemProducto) =>{
+        html += '(' + itemProducto.quantity + ')' +  '\t' + itemProducto.productName + '\n';
+    });
+
+    let mensaje = "Nombre Cliente: " + nomCliente.value + "\n";
+    mensaje += "Forma de Pago: " + tipoPago.value + "\n";
+    mensaje += "Valor de la factura $" + ptotal + "\n\n";
+    mensaje += "Valor del flete $" + flete.value + "\n\n";
+    mensaje += "Valor Total $" + gtotal + "\n\n";
+    mensaje += "Encontrara la Remision adjunta en el correo";
+
+    var templateParams = {
+        name: 'TiendaMeca',
+        from_name: emailDestino.value,
+        to_email: emailDestino.value,
+        nombre_cliente: nomCliente.value,
+        message: mensaje,
+        message_productos: html,
+        notes: 'Gracias por la Compra!'
+    };
+    
+    //service_id, template_id, templateParams, Public Key   (EmailJS)
+    emailjs.send('service_4qs3lwo', 'template_bmp256o', templateParams, 'Wc8w-ntVwOQLrcWmy')
+        .then(function(response) {
+           //console.log('SUCCESS!', response.status, response.text);
+        }, function(error) {
+           console.log('FAILED...', error);
+        });
+    //Limpia el formulario
+    document.querySelector("#InputName").value = "";
+    document.querySelector("#InputEmail").value = "";
+    document.querySelector("#InputValor").value = 0;
+    document.querySelector("#ListTipoPago").value = "Escoja..";
+    document.querySelector("#InputFlete").value = 0;
+    modalPay.style.display = "none"; 
+}
